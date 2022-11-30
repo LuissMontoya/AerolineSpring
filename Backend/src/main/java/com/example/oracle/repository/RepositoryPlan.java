@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository("planRepository")
-public interface RepositoryPlan extends CrudRepository<Plan, String> {
+public interface RepositoryPlan extends CrudRepository<Plan, Long> {
 
 }

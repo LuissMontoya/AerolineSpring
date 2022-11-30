@@ -3,20 +3,21 @@ package com.example.oracle.Entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import org.springframework.lang.NonNull;
 
 @Entity
 @Table(name="PLAN")
 public class Plan {
     @Id
-    private String plancodi;
+    private Long plancodi;
 
     private String plannomb;
 
-    public String getPlancodi() {
+    public Long getPlancodi() {
         return plancodi;
     }
 
-    public void setPlancodi(String plancodi) {
+    public void setPlancodi(Long plancodi) {
         this.plancodi = plancodi;
     }
 

@@ -8,17 +8,17 @@ import jakarta.persistence.Table;
 @Table(name = "AEROLINE")
 public class Aeroline {
     @Id
-    private String aerocodi;
+    private Long aerocodi;
 
     private String aeronomb;
 
     private String aeroesta;
 
-    public String getAerocodi() {
+    public Long getAerocodi() {
         return aerocodi;
     }
 
-    public void setAerocodi(String aerocodi) {
+    public void setAerocodi(Long aerocodi) {
         this.aerocodi = aerocodi;
     }
 
