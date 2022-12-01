@@ -1,0 +1,28 @@
+<p>Hoteles</p>
+<hr />
+<p>{{ '' }}</p>
+
+<!-- <ul class="hoteles">
+  <li *ngFor="let hotel of hoteles" >
+    {{ hotel.hotecodi }} - {{hotel.hotenomb}}
+  </li>
+</ul> -->
+
+
+
+<div class="card" style="width:450px;text-align:center;">
+  <div class="card-body">
+    <select  class="form-group my-1" id="hotel"  name="hotel" (selectionchange)="hotelChange($event)" title="Hotel" style="width:300px;">
+      <option value="" selected>Seleccione</option>
+
+      <option  *ngFor="let hotel of hoteles"
+      value={{hotel.hotecodi}}> {{ hotel.hotenomb }}</option>
+    </select>
+
+    <br>
+    <button class="btn btn-danger" id="button" name="button" style="margin-left:20px">Prueba boton</button>
+    <input type="hidden" id="id" name="id" value="" />
+  </div>
+</div>
+
+

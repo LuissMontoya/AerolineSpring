@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/hotel")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class ControllerHotel {
     @Autowired
     @Qualifier("hotelServiceImp")
