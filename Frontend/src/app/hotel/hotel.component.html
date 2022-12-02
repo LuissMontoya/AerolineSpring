@@ -7,22 +7,70 @@
     {{ hotel.hotecodi }} - {{hotel.hotenomb}}
   </li>
 </ul> -->
+<div>
+  <form action="" [formGroup]="formHotel" (ngSubmit)="onSubmit(formHotel.value)">
 
+    <div class="card" style="width:450px;text-align:center;">
+      <div class="card-body">
+        <select class="form-group my-1" id="hotel" name="hotel" formControlName="id" title="Hotel" style="width:300px;">
+          <option value="" selected>Seleccione</option>
 
+          <option *ngFor="let hotel of hoteles" value={{hotel.hotecodi}}> {{ hotel.hotenomb }}</option>
+        </select>
 
-<div class="card" style="width:450px;text-align:center;">
-  <div class="card-body">
-    <select  class="form-group my-1" id="hotel"  name="hotel" (selectionchange)="hotelChange($event)" title="Hotel" style="width:300px;">
-      <option value="" selected>Seleccione</option>
-
-      <option  *ngFor="let hotel of hoteles"
-      value={{hotel.hotecodi}}> {{ hotel.hotenomb }}</option>
-    </select>
-
-    <br>
-    <button class="btn btn-danger" id="button" name="button" style="margin-left:20px">Prueba boton</button>
-    <input type="hidden" id="id" name="id" value="" />
-  </div>
+        <br>
+        <button class="btn btn-danger" type="submit" id="button" name="button" style="margin-left:20px">Prueba
+          boton</button>
+        <input type="hidden" id="id" name="id" value="" />
+      </div>
+    </div>
+  </form>
 </div>
 
+<br>
+<hr>
+<div>
+  <form action="" [formGroup]="formHotel1" (ngSubmit)="onSubmit(formHotel1.value)">
 
+    <div class="card" style="width:450px;text-align:center;">
+      <div class="card-body">
+        <label for=""><b>Nombre&nbsp;&nbsp;</b> </label>
+        <input class="my-2" type="text" value="" ng-required="expression" formControlName="nombre" placeholder="NOMBRE" #name="">
+        <br>
+        <label for=""><b>Nit &nbsp;&nbsp;</b> </label>
+        <input class="my-2" type="number" value="" required formControlName="nit" minlength="5" placeholder="NIT">
+        <br>
+        <label for=""><b>Dirección &nbsp;&nbsp;</b> </label>
+        <input class="my-2" type="text" value="" required formControlName="direccion" placeholder="DIRECCIÓN">
+        <br>
+        <label for=""><b>Teléfono &nbsp;&nbsp;</b> </label>
+        <input class="my-2" type="number" value="" required formControlName="telefono" placeholder="TELEFONO">
+        <br>
+        <label for=""><b>Estado &nbsp;&nbsp;</b> </label>
+        <select name="" id="" required formControlName="estado">
+          <option value="">Seleccione</option>
+          <option value="A">Activo</option>
+          <option value="I">Inactivo</option>
+        </select>
+        <br>
+        <label for=""><b>Email &nbsp;&nbsp;</b> </label>
+        <input class="my-2" type="email" value="" required formControlName="email" placeholder="email@example.com">
+        <br>
+        <label for=""><b>Celular &nbsp;&nbsp;</b> </label>
+        <input class="my-2" type="number" value="" required formControlName="celular" placeholder="CELULAR">
+        <br>
+        <hr>
+        <button class="btn btn-danger" [disabled]="formHotel1.invalid" type="submit" id="button" name="button" style="margin-left:20px">Prueba
+          boton</button>
+        <input type="hidden" id="id" name="id" value="" />
+      </div>
+    </div>
+  </form>
+</div>
+
+<div>
+{{ formHotel1.value | json}}
+</div>
+<div>
+<label>Válido: </label>{{ formHotel1.valid | json}}
+</div>

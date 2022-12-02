@@ -2,6 +2,8 @@ import { HotelService } from './hotel.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Hotel } from '../model/HotelModel';
 import * as $ from 'jquery';
+import { FormGroup, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-hotel',
@@ -9,62 +11,77 @@ import * as $ from 'jquery';
   styleUrls: ['./hotel.component.css'],
 })
 export class HotelComponent implements OnInit {
-
   hoteles!: Hotel[];
   selectedHotel!: Hotel;
-  seleccionados:string[]=[];
+  seleccionados: string[] = [];
 
-  @Input() data:any;
+  items:any;
+  formHotel!: any;
+  formHotel1!: any;
 
-  constructor(private hotelService: HotelService) {}
+  @Input() data: any;
+
+  constructor(
+    private hotelService: HotelService,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     //console.log(this.hotel);
     this.getHotel();
-    $('button').click(function() {
+    this.formHotel = this.formBuilder.group({
+      id: '',
+    });
+
+    this.formHotel1 = this.formBuilder.group({
+      codigo: '',
+      nombre:['', [Validators.required]],
+      nit: ['',[Validators.required,Validators.minLength(5)]],
+      direccion:['', [Validators.required]],
+      telefono:['',[Validators.required,Validators.minLength(8)]],
+      estado:['',[Validators.required]],
+      email:['', [Validators.email]],
+      celular:''
+    });
+
+    $('button').click(function () {
       //alert('hola Jquey!!');
       var hotelVal = $('#hotel').val();
       var hotelName = $('select[name="hotel"] option:selected').text();
 
-      alert(hotelVal + hotelName);
+      //alert(hotelVal + hotelName);
       $('#id').val(hotelVal!);
-  });
+    });
 
-  $("#hotel").blur(function() {
-    alert('hola Hotel!!');
-});
-
+    $('#hotel').blur(function () {
+      //alert('hola Hotel!!');
+    });
   }
 
-  private getHotel(){
+  private getHotel() {
     this.hotelService.finAllHotel().subscribe(
       /*(data) => {this.hotel = data,
         console.log(this.hotel[1])},*/
-      (response) =>{
-        this.hoteles = response,
-      console.log(response);
-    }
-
+      (response) => {
+        (this.hoteles = response), console.log(response);
+      }
     );
   }
-
 
   onSelect(hotel: Hotel): void {
     this.selectedHotel = hotel;
   }
 
-  click ():void {
+  click(): void {
     alert('click');
   }
 
-  blur (event:any) {
+  blur(event: any) {
     alert(event.target.value);
   }
 
-  hotelChange(value: any) {
-    if (value) {
-      alert(value);
-    }
- }
-
+  onSubmit(customerData:any) {
+    // Process checkout data here
+    console.warn('Your order has been submitted', customerData);
+  }
 }
