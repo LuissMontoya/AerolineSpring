@@ -1,83 +1,97 @@
 package com.example.oracle.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "HOTEL")
 public class Hotel {
     @Id
-    private Long hotecodi;
-    private String hotenomb;
-    private String hotenit;
-    private String hotedire;
-    private Long hotetele;
-    private String hoteesta;
-    private String hoteemai;
-    private Long hotecelu;
+    @Column(name = "HOTECODI")
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long codigo;
 
-    public Long getHotecodi() {
-        return hotecodi;
+    @Column(name = "HOTENOMB")
+    private String nombre;
+
+    @Column(name = "HOTENIT")
+    private String nit;
+
+    @Column(name = "HOTEDIRE")
+    private String direccion;
+
+    @Column(name = "HOTETELE")
+    private Long telefono;
+
+    @Column(name = "HOTEESTA")
+    private String estado;
+
+    @Column(name = "HOTEEMAI")
+    private String email;
+
+    @Column(name = "HOTECELU")
+    private Long celular;
+
+    public Long getCodigo() {
+        return codigo;
     }
 
-    public void setHotecodi(Long hotecodi) {
-        this.hotecodi = hotecodi;
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
     }
 
-    public String getHotenomb() {
-        return hotenomb;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setHotenomb(String hotenomb) {
-        this.hotenomb = hotenomb;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getHotenit() {
-        return hotenit;
+    public String getNit() {
+        return nit;
     }
 
-    public void setHotenit(String hotenit) {
-        this.hotenit = hotenit;
+    public void setNit(String nit) {
+        this.nit = nit;
     }
 
-    public String getHotedire() {
-        return hotedire;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setHotedire(String hotedire) {
-        this.hotedire = hotedire;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public Long getHotetele() {
-        return hotetele;
+    public Long getTelefono() {
+        return telefono;
     }
 
-    public void setHotetele(Long hotetele) {
-        this.hotetele = hotetele;
+    public void setTelefono(Long telefono) {
+        this.telefono = telefono;
     }
 
-    public String getHoteesta() {
-        return hoteesta;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setHoteesta(String hoteesta) {
-        this.hoteesta = hoteesta;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public String getHoteemai() {
-        return hoteemai;
+    public String getEmail() {
+        return email;
     }
 
-    public void setHoteemai(String hoteemai) {
-        this.hoteemai = hoteemai;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Long getHotecelu() {
-        return hotecelu;
+    public Long getCelular() {
+        return celular;
     }
 
-    public void setHotecelu(Long hotecelu) {
-        this.hotecelu = hotecelu;
+    public void setCelular(Long celular) {
+        this.celular = celular;
     }
 }

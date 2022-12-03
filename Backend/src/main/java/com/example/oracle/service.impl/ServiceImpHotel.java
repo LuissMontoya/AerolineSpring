@@ -18,4 +18,20 @@ public class ServiceImpHotel {
     public List<Hotel> lisAllHotel(){
         return (List<Hotel>) repositoryHotel.findAll();
     }
+
+    public Hotel findById(Long id){
+        return repositoryHotel.findById(id).orElse(null);
+    }
+
+    public Hotel save(Hotel hotel){
+        return repositoryHotel.save(hotel);
+    }
+
+    public Hotel update(Hotel hotel){
+        return repositoryHotel.save(hotel);
+    }
+
+    public void delete(Long id){
+        repositoryHotel.deleteById(id);
+    }
 }

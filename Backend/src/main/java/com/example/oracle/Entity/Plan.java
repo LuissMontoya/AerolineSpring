@@ -1,5 +1,6 @@
 package com.example.oracle.Entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -9,23 +10,25 @@ import org.springframework.lang.NonNull;
 @Table(name="PLAN")
 public class Plan {
     @Id
-    private Long plancodi;
+    @Column(name = "PLANCODI")
+    private Long codigo;
 
-    private String plannomb;
+    @Column(name = "PLANNOMB")
+    private String nombre;
 
-    public Long getPlancodi() {
-        return plancodi;
+    public Long getCodigo() {
+        return codigo;
     }
 
-    public void setPlancodi(Long plancodi) {
-        this.plancodi = plancodi;
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
     }
 
-    public String getPlannomb() {
-        return plannomb;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setPlannomb(String plannomb) {
-        this.plannomb = plannomb;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }

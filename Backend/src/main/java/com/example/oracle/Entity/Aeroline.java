@@ -1,40 +1,41 @@
 package com.example.oracle.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "AEROLINE")
 public class Aeroline {
     @Id
-    private Long aerocodi;
+    @Column(name = "AEROCODI")
+    private Long codigo;
 
-    private String aeronomb;
+    @Column(name = "AERONOMB")
+    private String nombre;
 
-    private String aeroesta;
+    @Column(name = "AEROESTA")
+    private String estado;
 
-    public Long getAerocodi() {
-        return aerocodi;
+    public Long getCodigo() {
+        return codigo;
     }
 
-    public void setAerocodi(Long aerocodi) {
-        this.aerocodi = aerocodi;
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
     }
 
-    public String getAeronomb() {
-        return aeronomb;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setAeronomb(String aeronomb) {
-        this.aeronomb = aeronomb;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getAeroesta() {
-        return aeroesta;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setAeroesta(String aeroesta) {
-        this.aeroesta = aeroesta;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

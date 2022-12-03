@@ -15,7 +15,7 @@
         <select class="form-group my-1" id="hotel" name="hotel" formControlName="id" title="Hotel" style="width:300px;">
           <option value="" selected>Seleccione</option>
 
-          <option *ngFor="let hotel of hoteles" value={{hotel.hotecodi}}> {{ hotel.hotenomb }}</option>
+          <option *ngFor="let hotel of hoteles" value={{hotel.codigo}}> {{ hotel.nombre }}</option>
         </select>
 
         <br>

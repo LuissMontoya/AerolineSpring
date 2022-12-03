@@ -6,4 +6,12 @@ import java.util.List;
 
 public interface ServiceHotel {
     public abstract List<Hotel> listAllHotel();
+
+    public abstract Hotel findById(Long id);
+
+    public abstract Hotel save(Hotel hotel);
+
+    public abstract Hotel update(Hotel hotel);
+
+    public void delete(Long id);
 }
