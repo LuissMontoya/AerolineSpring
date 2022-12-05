@@ -2,7 +2,7 @@ import { HotelService } from './hotel.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Hotel } from '../model/HotelModel';
 import * as $ from 'jquery';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormGroup, NgForm, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -34,8 +34,7 @@ export class HotelComponent implements OnInit {
     });
 
     this.formHotel1 = this.formBuilder.group({
-      codigo: '',
-      nombre:['', [Validators.required]],
+      nombre: ['', [Validators.required]],
       nit: ['',[Validators.required,Validators.minLength(5)]],
       direccion:['', [Validators.required]],
       telefono:['',[Validators.required,Validators.minLength(8)]],
@@ -44,12 +43,12 @@ export class HotelComponent implements OnInit {
       celular:''
     });
 
-    $('button').click(function () {
+    $('button#button').click(function () {
       //alert('hola Jquey!!');
       var hotelVal = $('#hotel').val();
       var hotelName = $('select[name="hotel"] option:selected').text();
 
-      //alert(hotelVal + hotelName);
+      alert(hotelVal + hotelName);
       $('#id').val(hotelVal!);
     });
 
@@ -63,7 +62,8 @@ export class HotelComponent implements OnInit {
       /*(data) => {this.hotel = data,
         console.log(this.hotel[1])},*/
       (response) => {
-        (this.hoteles = response), console.log(response);
+        (this.hoteles = response)
+        //console.log(response);
       }
     );
   }
@@ -80,8 +80,16 @@ export class HotelComponent implements OnInit {
     alert(event.target.value);
   }
 
-  onSubmit(customerData:any) {
+  onSubmit(form: NgForm) {
     // Process checkout data here
-    console.warn('Your order has been submitted', customerData);
+    console.log(form.value);
+
+    this.hotelService.addHotel(form.value).subscribe(
+      (response:Hotel)=>{
+        console.log(response);
+      },
+      );
   }
+
+
 }

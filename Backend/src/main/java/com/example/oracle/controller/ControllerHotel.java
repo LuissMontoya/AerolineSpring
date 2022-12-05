@@ -30,14 +30,14 @@ public class ControllerHotel {
         return hotel;
     }
 
-    @PostMapping(path = "/hotel")
+    @PostMapping(path = "/hotel/add")
     public Hotel save(@RequestBody Hotel hotel){
         Long id_ = serviceImpHotel.getUltimateId();
         hotel.setCodigo(id_+1);
         return serviceImpHotel.save(hotel);
     }
 
-    @PutMapping(path = "/hotel")
+    @PutMapping(path = "/hotel/update")
     public Hotel update(@RequestBody Hotel hotel){
         Hotel hotelU = serviceImpHotel.findById(hotel.getCodigo());
         if( hotelU == null) {
@@ -47,7 +47,7 @@ public class ControllerHotel {
         return hotelU;
     }
 
-    @DeleteMapping(path = "/hotel/{id}")
+    @DeleteMapping(path = "/hotel/delete/{id}")
     public boolean delete(@PathVariable Long id){
         Hotel hotelD = serviceImpHotel.findById(id);
         if( hotelD == null) {

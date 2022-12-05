@@ -1,6 +1,7 @@
-<p>Hoteles</p>
+<div>
+  <h4>Hoteles</h4>
+</div>
 <hr />
-<p>{{ '' }}</p>
 
 <!-- <ul class="hoteles">
   <li *ngFor="let hotel of hoteles" >
@@ -30,18 +31,19 @@
 <br>
 <hr>
 <div>
-  <form action="" [formGroup]="formHotel1" (ngSubmit)="onSubmit(formHotel1.value)">
+  <form action="" [formGroup]="formHotel1" (ngSubmit)="onSubmit(formHotel1)">
 
     <div class="card" style="width:450px;text-align:center;">
       <div class="card-body">
         <label for=""><b>Nombre&nbsp;&nbsp;</b> </label>
-        <input class="my-2" type="text" value="" ng-required="expression" formControlName="nombre" placeholder="NOMBRE" #name="">
+        <input class="my-2" type="text" value="" oninput="this.value = this.value.toUpperCase()"  ng-required="expression" formControlName="nombre" placeholder="NOMBRE"
+          #name="">
         <br>
         <label for=""><b>Nit &nbsp;&nbsp;</b> </label>
         <input class="my-2" type="number" value="" required formControlName="nit" minlength="5" placeholder="NIT">
         <br>
         <label for=""><b>Dirección &nbsp;&nbsp;</b> </label>
-        <input class="my-2" type="text" value="" required formControlName="direccion" placeholder="DIRECCIÓN">
+        <input class="my-2" type="text" value="" required oninput="this.value = this.value.toUpperCase()" formControlName="direccion" placeholder="DIRECCIÓN">
         <br>
         <label for=""><b>Teléfono &nbsp;&nbsp;</b> </label>
         <input class="my-2" type="number" value="" required formControlName="telefono" placeholder="TELEFONO">
@@ -60,7 +62,8 @@
         <input class="my-2" type="number" value="" required formControlName="celular" placeholder="CELULAR">
         <br>
         <hr>
-        <button class="btn btn-danger" [disabled]="formHotel1.invalid" type="submit" id="button" name="button" style="margin-left:20px">Prueba
+        <button class="btn btn-danger" [disabled]="formHotel1.invalid" type="submit" id="button" name="btnAddHotel"
+          style="margin-left:20px">Prueba
           boton</button>
         <input type="hidden" id="id" name="id" value="" />
       </div>
@@ -69,73 +72,75 @@
 </div>
 
 <div>
-{{ formHotel1.value | json}}
+  {{ formHotel1.value | json}}
 </div>
 <div>
-<label>Válido: </label>{{ formHotel1.valid | json}}
+  <label>Válido: </label>{{ formHotel1.valid | json}}
 </div>
 
 
 <hr>
+<div class="col-lg-4 justify-content-center">
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
 
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

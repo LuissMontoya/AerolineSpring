@@ -16,4 +16,18 @@ export class HotelService {
   finAllHotel(): Observable<Hotel[]>{
     return this.httpClient.get<Hotel[]>(`${this.url}`);
   }
+
+  addHotel(hotel: Hotel): Observable<Hotel>{
+    return this.httpClient.post<Hotel>(`${this.url}/add`,hotel);
+  }
+
+  updateHotel(hotel: Hotel): Observable<Hotel>{
+    return this.httpClient.put<Hotel>(`${this.url}/update`,hotel);
+  }
+
+  deleteHotel(id: number): Observable<boolean>{
+    return this.httpClient.delete<boolean>(`${this.url}/delete/${id}`);
+  }
+
+
 }
