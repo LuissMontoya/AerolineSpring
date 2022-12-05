@@ -21,4 +21,34 @@ public class ServiceImpAeroline implements ServiceAeroline {
     public List<Aeroline> listAllAeroline() {
         return (List<Aeroline>) repositoryAeroline.findAll();
     }
+
+    @Override
+    public Aeroline findById(Long id) {
+        return repositoryAeroline.findById(id).orElse(null);
+    }
+
+    @Override
+    public Aeroline save(Aeroline aeroline) {
+        return repositoryAeroline.save(aeroline);
+    }
+
+    @Override
+    public Aeroline update(Aeroline aeroline) {
+        return repositoryAeroline.save(aeroline);
+    }
+
+    @Override
+    public void delete(Long id) {
+        repositoryAeroline.deleteById(id);
+    }
+
+    @Override
+    public List<Aeroline> getOrdenAeroline() {
+        return repositoryAeroline.getOrdenAeroline();
+    }
+
+    @Override
+    public Long getUltimateId() {
+        return repositoryAeroline.getUltimateId();
+    }
 }

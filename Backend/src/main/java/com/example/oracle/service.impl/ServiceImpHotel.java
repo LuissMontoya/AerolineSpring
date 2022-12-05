@@ -4,7 +4,6 @@ import com.example.oracle.Entity.Hotel;
 import com.example.oracle.repository.RepositoryHotel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +14,7 @@ public class ServiceImpHotel {
     @Qualifier("hotelRepository")
     private RepositoryHotel repositoryHotel;
 
-    public List<Hotel> lisAllHotel(){
+    public List<Hotel> listAllHotel(){
         return (List<Hotel>) repositoryHotel.findAll();
     }
 
@@ -34,4 +33,14 @@ public class ServiceImpHotel {
     public void delete(Long id){
         repositoryHotel.deleteById(id);
     }
+
+    public List<Hotel> getOrdenHotel(){
+       return repositoryHotel.getOrdenHotel();
+    }
+
+    public Long getUltimateId() {
+        return repositoryHotel.getUltimateId();
+    }
+
+
 }

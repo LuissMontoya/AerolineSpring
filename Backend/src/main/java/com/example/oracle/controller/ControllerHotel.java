@@ -18,7 +18,7 @@ public class ControllerHotel {
 
     @GetMapping(path = "/hotel", produces = {"application/json"})
     public List<Hotel> listHotel(){
-        return serviceImpHotel.lisAllHotel();
+        return serviceImpHotel.listAllHotel();
     }
 
     @GetMapping(path = "/hotel/{id}")
@@ -32,8 +32,9 @@ public class ControllerHotel {
 
     @PostMapping(path = "/hotel")
     public Hotel save(@RequestBody Hotel hotel){
-        Hotel hotelS = serviceImpHotel.save(hotel);
-        return hotelS;
+        Long id_ = serviceImpHotel.getUltimateId();
+        hotel.setCodigo(id_+1);
+        return serviceImpHotel.save(hotel);
     }
 
     @PutMapping(path = "/hotel")
@@ -47,13 +48,15 @@ public class ControllerHotel {
     }
 
     @DeleteMapping(path = "/hotel/{id}")
-    public String delete(@PathVariable Long id){
+    public boolean delete(@PathVariable Long id){
         Hotel hotelD = serviceImpHotel.findById(id);
         if( hotelD == null) {
-            throw new RuntimeException("User id not found -"+id);
+            return false;
+        }else{
+            serviceImpHotel.delete(id);
+            return true;
         }
-        serviceImpHotel.delete(id);
-        return "Deleted Hotel id - "+id;
+
     }
 
 }

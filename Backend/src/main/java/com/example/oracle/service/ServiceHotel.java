@@ -1,6 +1,7 @@
 package com.example.oracle.service;
 
 import com.example.oracle.Entity.Hotel;
+import com.example.oracle.Entity.Plan;
 
 import java.util.List;
 
@@ -14,4 +15,8 @@ public interface ServiceHotel {
     public abstract Hotel update(Hotel hotel);
 
     public void delete(Long id);
+
+    public abstract List<Hotel> getOrdenHotel();
+
+    public abstract Long getUltimateId();
 }

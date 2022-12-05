@@ -1,15 +1,13 @@
 package com.example.oracle.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 
 @Entity
 @Table(name="PLAN")
 public class Plan {
     @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PLANCODI")
     private Long codigo;
 
