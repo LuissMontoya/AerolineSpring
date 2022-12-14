@@ -6,7 +6,7 @@ declare var window: any;
 
 import { DataTableDirective } from 'angular-datatables';
 
-import { NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Subject } from 'rxjs';
 
@@ -21,8 +21,7 @@ export class HotelComponent implements AfterViewInit, OnInit {
   seleccionados: string[] = [];
 
   items:any;
-  formHotel!: any;
-  formHotel1!: any;
+  formHotel!: FormGroup;
 
   formModal: any;
 
@@ -62,14 +61,14 @@ export class HotelComponent implements AfterViewInit, OnInit {
     //console.log(this.hotel);
     this.getHotel();
 
-    this.formHotel1 = this.formBuilder.group({
-      nombre: ['', [Validators.required, Validators.minLength(2)]],
-      nit: ['',[Validators.required,Validators.minLength(8)]],
-      direccion:['', [Validators.required,Validators.minLength(3)]],
-      telefono:['',[Validators.required,Validators.minLength(8)]],
-      estado:['',[Validators.required]],
-      email:['', [Validators.email]],
-      celular:''
+    this.formHotel = new FormGroup({
+      nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      nit:  new FormControl ('',[Validators.required, Validators.minLength(8), Validators.pattern("^[0-9]+-{1}[0-9]{1}")]),
+      direccion:new FormControl('', [Validators.required, Validators.minLength(4)]),
+      telefono: new FormControl('',[Validators.required, Validators.minLength(8),Validators.pattern("[0-9]*")]),
+      estado:new FormControl('',[Validators.required]),
+      email:new FormControl('', [Validators.email]),
+      celular:new FormControl('',[Validators.minLength(10), Validators.pattern("[0-9]{10}")])
     });
 
     $('button#button').click(function () {
@@ -85,7 +84,7 @@ export class HotelComponent implements AfterViewInit, OnInit {
       //alert('hola Hotel!!');
     });
 
-    this.formModal = new window.bootstrap.Modal(
+       this.formModal = new window.bootstrap.Modal(
       document.getElementById('myModal')
     );
   }
@@ -119,15 +118,15 @@ export class HotelComponent implements AfterViewInit, OnInit {
     alert(event.target.value);
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit(form: FormGroup) {
     // Process checkout data here
-    console.log(form.value);
-    if(form.valid){
-      this.hotelService.addHotel(form.value).subscribe(
-        (response:Hotel)=>{
-          console.log(response);
-          window.location.reload();
-        },
+    console.log(this.formHotel.get("nit"));
+     if(form.valid){
+       this.hotelService.addHotel(form.value).subscribe(
+         (response:Hotel)=>{
+           console.log(response);
+           window.location.reload();
+         },
         );
     }
 
@@ -161,6 +160,29 @@ export class HotelComponent implements AfterViewInit, OnInit {
   saveSomeThing() {
     // confirm or save something
     this.formModal.hide();
+  }
+
+  //Validaciones
+  get Nombre(): FormControl{
+    return this.formHotel.get("nombre") as FormControl;
+  }
+  get Nit(): FormControl{
+    return this.formHotel.get("nit") as FormControl;
+  }
+  get Direccion(): FormControl{
+    return this.formHotel.get("direccion") as FormControl;
+  }
+  get Telefono(): FormControl{
+    return this.formHotel.get("telefono") as FormControl;
+  }
+  get Estado(): FormControl{
+    return this.formHotel.get("estado") as FormControl;
+  }
+  get Email(): FormControl{
+    return this.formHotel.get("email") as FormControl;
+  }
+  get Celular(): FormControl{
+    return this.formHotel.get("celular") as FormControl;
   }
 
 }

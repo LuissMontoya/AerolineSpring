@@ -31,7 +31,7 @@
 <hr>
 
 <!-- Formulario -->
-<form action="" method="post" [formGroup]="formHotel1" (ngSubmit)="onSubmit(formHotel1)">
+<form action="" method="post" [formGroup]="formHotel" (ngSubmit)="onSubmit(formHotel)">
   <div class="row justify-content-center">
     <div class="col-lg-10 col-md-12 col-sm-12 col-12 py-1 align-self-center text-center">
       <div class="card shadow cuadroHeader " id="cuepoCuadroBusqueda">
@@ -63,9 +63,10 @@
               </div>
               <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
                 <input class="form-control inputFomulario" oninput="this.value = this.value.toUpperCase()"
-                  formControlName="nombre" type="text" placeholder="Nombre" id="name" name="txbName">
-                <label class="error" for="name" id="name_error">Campo requerido.</label>
-              </div>
+                  formControlName="nombre" type="text" placeholder="Nombre" id="name" name="txbName" required>
+                  <label class="error" *ngIf="Nombre.errors?.['required'] && (Nombre.touched || Nombre.dirty)">Campo requerido.</label>
+                  <label class="error" *ngIf="Nombre.errors?.['minlength']">longitud no válida</label>
+                </div>
             </div>
           </div>
 
@@ -75,9 +76,11 @@
                 <label>Nit</label>
               </div>
               <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
-                <input class="form-control inputFomulario" type="text" oninput="this.value = this.value.toUpperCase()"
-                  formControlName="nit" placeholder="Nit" id="nit" name="txbNit">
-                <label class="error" for="nit" id="nit_error">Campo requerido.</label>
+                <input class="form-control inputFomulario" type="text"
+                  formControlName="nit" placeholder="Nit" id="nit" name="txbNit" required>
+                  <label class="error" *ngIf="Nit.errors?.['required'] && (Nit.touched || Nit.dirty)">Campo requerido.</label>
+                  <label class="error" *ngIf="Nit.errors?.['minlength'] && (Nit.touched || Nit.dirty)">longitud no válida.</label>
+                  <label class="error" *ngIf="Nit.errors?.['pattern'] && (Nit.touched)">digite un nit válido.</label>
               </div>
             </div>
           </div>
@@ -89,8 +92,8 @@
               </div>
               <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
                 <input class="form-control inputFomulario" type="text" formControlName="direccion"
-                  placeholder="Direccion" id="address" name="txbAddress">
-                <label class="error" for="address" id="address_error">Campo requerido.</label>
+                  placeholder="Direccion" id="address" name="txbAddress" required>
+                  <label class="error" *ngIf="Direccion.errors?.['required'] && (Direccion.touched || Direccion.dirty)">dirección no válida.</label>
               </div>
             </div>
           </div>
@@ -102,8 +105,10 @@
               </div>
               <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
                 <input class="form-control inputFomulario" type="text" formControlName="telefono" placeholder="Telefono"
-                  id="phone" name="txbPhone">
-                <label class="error" for="phone" id="phone_error">Campo requerido.</label>
+                  id="phone" name="txbPhone" required>
+                  <label class="error" *ngIf="Telefono.errors?.['required'] && (Telefono.touched || Telefono.dirty)">Campo requerido.</label>
+                  <label class="error" *ngIf="Telefono.errors?.['minlength']">longitud no válida.</label>
+                  <label class="error" *ngIf="Telefono.errors?.['pattern'] && (Telefono.touched || Telefono.dirty)">digite un teléfono válido.</label>
               </div>
             </div>
           </div>
@@ -116,12 +121,12 @@
               <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
                 <!--    <input class="form-control inputFomulario" type="text" placeholder="Estado" id="status" name="txbStatus">-->
                 <select name="txbStatus" id="status" class="form-select inputFomulario" formControlName="estado"
-                  placeholder="Opciones">
+                  placeholder="Opciones" required>
                   <option select value="">SELECCIONE</option>
                   <option value="A">ACTIVO</option>
                   <option value="I">INACTIVO</option>
                 </select>
-                <label class="error" for="status" id="status_error">Campo requerido.</label>
+                <label class="error" *ngIf="Estado.errors?.['required'] && (Estado.touched)">Campo requerido.</label>
               </div>
             </div>
           </div>
@@ -134,7 +139,7 @@
               <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
                 <input class="form-control inputFomulario" type="email" formControlName="email"
                   placeholder="example@example.com" id="email" name="txbEmail">
-                <label class="error" for="email" id="email_error">Campo requerido.</label>
+                  <label class="error" *ngIf="Email.errors?.['email'] && (Email.touched || Email.dirty)">Digite un correo válido.</label>
               </div>
             </div>
           </div>
@@ -147,7 +152,8 @@
               <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
                 <input class="form-control inputFomulario" type="text" placeholder="Celular" id="mobile"
                   formControlName="celular" name="txbMobile">
-                <label class="error" for="mobile" id="mobile_error">Campo requerido.</label>
+                  <!-- <label class="error" *ngIf="Celular.errors?.['minlength']">longitud no válida.</label> -->
+                  <label class="error" *ngIf="Celular.errors?.['pattern'] && (Celular.touched || Celular.dirty)">digite un celular válido.</label>
               </div>
             </div>
           </div>
@@ -155,7 +161,8 @@
           <div class="col-lg-2 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
             <div class="row justify-content-left py-2">
               <input id='btnSaveHotel' class="btn form-control botonesIS" style="width:130px" type="submit"
-                value="Guardar" [disabled]="formHotel1.invalid" />
+                value="Guardar" [disabled]="formHotel.invalid"/>
+                <!-- [disabled]="formHotel.invalid" -->
             </div>
           </div>
 
@@ -167,10 +174,10 @@
           </div>
 
           <div>
-            {{ formHotel1.value | json}}
+            {{ formHotel.value | json}}
           </div>
           <div>
-            <label>Válido: </label>{{ formHotel1.valid | json}}
+            <label>Válido: </label>{{ formHotel.valid | json}}
           </div>
 
 
@@ -178,7 +185,6 @@
       </div>
     </div>
   </div>
-
 
 </form>
 
