@@ -18,7 +18,7 @@ public class ControllerHotel {
 
     @GetMapping(path = "/hotel", produces = {"application/json"})
     public List<Hotel> listHotel(){
-        return serviceImpHotel.listAllHotel();
+        return serviceImpHotel.getOrdenHotel();
     }
 
     @GetMapping(path = "/hotel/{id}")

@@ -1,19 +1,19 @@
 <div>
-  <h4>Hoteles</h4>
+  <h4 id="title">Hoteles</h4>
 </div>
 <hr />
-
+<script src="../js/jquery-3.3.1.js"></script>
 <!-- <ul class="hoteles">
   <li *ngFor="let hotel of hoteles" >
     {{ hotel.hotecodi }} - {{hotel.hotenomb}}
   </li>
 </ul> -->
 <div>
-  <form action="" [formGroup]="formHotel" (ngSubmit)="onSubmit(formHotel.value)">
+  <form action="">
 
     <div class="card" style="width:450px;text-align:center;">
       <div class="card-body">
-        <select class="form-group my-1" id="hotel" name="hotel" formControlName="id" title="Hotel" style="width:300px;">
+        <select class="form-group my-1" id="hotel" name="hotel" title="Hotel" style="width:300px;">
           <option value="" selected>Seleccione</option>
 
           <option *ngFor="let hotel of hoteles" value={{hotel.codigo}}> {{ hotel.nombre }}</option>
@@ -28,119 +28,234 @@
   </form>
 </div>
 
-<br>
 <hr>
-<div>
-  <form action="" [formGroup]="formHotel1" (ngSubmit)="onSubmit(formHotel1)">
 
-    <div class="card" style="width:450px;text-align:center;">
-      <div class="card-body">
-        <label for=""><b>Nombre&nbsp;&nbsp;</b> </label>
-        <input class="my-2" type="text" value="" oninput="this.value = this.value.toUpperCase()"  ng-required="expression" formControlName="nombre" placeholder="NOMBRE"
-          #name="">
-        <br>
-        <label for=""><b>Nit &nbsp;&nbsp;</b> </label>
-        <input class="my-2" type="number" value="" required formControlName="nit" minlength="5" placeholder="NIT">
-        <br>
-        <label for=""><b>Dirección &nbsp;&nbsp;</b> </label>
-        <input class="my-2" type="text" value="" required oninput="this.value = this.value.toUpperCase()" formControlName="direccion" placeholder="DIRECCIÓN">
-        <br>
-        <label for=""><b>Teléfono &nbsp;&nbsp;</b> </label>
-        <input class="my-2" type="number" value="" required formControlName="telefono" placeholder="TELEFONO">
-        <br>
-        <label for=""><b>Estado &nbsp;&nbsp;</b> </label>
-        <select name="" id="" required formControlName="estado">
-          <option value="">Seleccione</option>
-          <option value="A">Activo</option>
-          <option value="I">Inactivo</option>
-        </select>
-        <br>
-        <label for=""><b>Email &nbsp;&nbsp;</b> </label>
-        <input class="my-2" type="email" value="" required formControlName="email" placeholder="email@example.com">
-        <br>
-        <label for=""><b>Celular &nbsp;&nbsp;</b> </label>
-        <input class="my-2" type="number" value="" required formControlName="celular" placeholder="CELULAR">
-        <br>
-        <hr>
-        <button class="btn btn-danger" [disabled]="formHotel1.invalid" type="submit" id="button" name="btnAddHotel"
-          style="margin-left:20px">Prueba
-          boton</button>
-        <input type="hidden" id="id" name="id" value="" />
+<!-- Formulario -->
+<form action="" method="post" [formGroup]="formHotel1" (ngSubmit)="onSubmit(formHotel1)">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 col-md-12 col-sm-12 col-12 py-1 align-self-center text-center">
+      <div class="card shadow cuadroHeader " id="cuepoCuadroBusqueda">
+        <div class="row justify-content-left py-2">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12 py-3 align-self-center text-left">
+            <label class="titulosPrincipalesPagina">Hotel</label>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row justify-content-left py-2">
+          <div class="col-lg-2 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left ocultar">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <label>Codigo</label>
+              </div>
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <input class="form-control inputFomulario" type="text" placeholder="Codigo" id="code" name="txbCode">
+                <label class="error" for="code" id="code_error">Campo requerido.</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-4 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <label>Nombre</label>
+              </div>
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <input class="form-control inputFomulario" oninput="this.value = this.value.toUpperCase()"
+                  formControlName="nombre" type="text" placeholder="Nombre" id="name" name="txbName">
+                <label class="error" for="name" id="name_error">Campo requerido.</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <label>Nit</label>
+              </div>
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <input class="form-control inputFomulario" type="text" oninput="this.value = this.value.toUpperCase()"
+                  formControlName="nit" placeholder="Nit" id="nit" name="txbNit">
+                <label class="error" for="nit" id="nit_error">Campo requerido.</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-4 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <label>Address</label>
+              </div>
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <input class="form-control inputFomulario" type="text" formControlName="direccion"
+                  placeholder="Direccion" id="address" name="txbAddress">
+                <label class="error" for="address" id="address_error">Campo requerido.</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <label>Telefono</label>
+              </div>
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <input class="form-control inputFomulario" type="text" formControlName="telefono" placeholder="Telefono"
+                  id="phone" name="txbPhone">
+                <label class="error" for="phone" id="phone_error">Campo requerido.</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <label>Estado</label>
+              </div>
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <!--    <input class="form-control inputFomulario" type="text" placeholder="Estado" id="status" name="txbStatus">-->
+                <select name="txbStatus" id="status" class="form-select inputFomulario" formControlName="estado"
+                  placeholder="Opciones">
+                  <option select value="">SELECCIONE</option>
+                  <option value="A">ACTIVO</option>
+                  <option value="I">INACTIVO</option>
+                </select>
+                <label class="error" for="status" id="status_error">Campo requerido.</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-4 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <label>Email</label>
+              </div>
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <input class="form-control inputFomulario" type="email" formControlName="email"
+                  placeholder="example@example.com" id="email" name="txbEmail">
+                <label class="error" for="email" id="email_error">Campo requerido.</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <label>Celular</label>
+              </div>
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <input class="form-control inputFomulario" type="text" placeholder="Celular" id="mobile"
+                  formControlName="celular" name="txbMobile">
+                <label class="error" for="mobile" id="mobile_error">Campo requerido.</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <input id='btnSaveHotel' class="btn form-control botonesIS" style="width:130px" type="submit"
+                value="Guardar" [disabled]="formHotel1.invalid" />
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <input id='search' class="btn form-control botonesIS" style="width:130px" type="button" name="showHotel"
+                value="Buscar" />
+            </div>
+          </div>
+
+          <div>
+            {{ formHotel1.value | json}}
+          </div>
+          <div>
+            <label>Válido: </label>{{ formHotel1.valid | json}}
+          </div>
+
+
+        </div>
       </div>
     </div>
-  </form>
+  </div>
+
+
+</form>
+
+
+<!-- Formulario -->
+<div class="row justify-content-center py-0 listado ">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-12 py-1 align-self-center text-center">
+    <div class="table-responsive">
+      <table id="hotels" name="hotels" class="table table-hover table-striped table-bordered" cellspacing="0"
+        width="100%">
+        <thead>
+          <tr>
+            <th style="width:30px;background-color: #9FD5D1;">Codigo</th>
+            <th style="width:30px;background-color: #9FD5D1">Nombre</th>
+            <th style="width:30px;background-color: #9FD5D1">Nit</th>
+            <th style="width:30px;background-color: #9FD5D1">Direccion</th>
+            <th style="width:30px;background-color: #9FD5D1">Telefono</th>
+            <th style="width:30px;background-color: #9FD5D1">Estado</th>
+            <th style="width:30px;background-color: #9FD5D1">Email</th>
+            <th style="width:30px;background-color: #9FD5D1">Celular</th>
+            <th style="width:30px;background-color: #9FD5D1">Editar</th>
+            <th style="width:30px;background-color: #9FD5D1">Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hotel of hoteles" style="vertical-align:middle;">
+            <th scope="row">{{ hotel.codigo }} </th>
+            <td>{{ hotel.nombre }}</td>
+            <td>{{ hotel.nit }}</td>
+            <td>{{ hotel.direccion }}</td>
+            <td>{{ hotel.telefono }}</td>
+            <td>{{ hotel.estado }}</td>
+            <td>{{ hotel.email }}</td>
+            <td>{{ hotel.celular }}</td>
+            <td><a class="btn btn-warning"><i class="fa fa-edit fa-2x" (click)="openFormModal(hotel.codigo)"
+                  aria-hidden="true"></i></a></td>
+            <td><a class="btn btn-danger"><i class="fa fa-trash fa-2x" (click)="eliminarHotel(hotel.codigo)"
+                  aria-hidden="true"></i></a></td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
 </div>
 
-<div>
-  {{ formHotel1.value | json}}
+<!-- Modal Editar -->
+<div class="container">
+  <div class="row mt-4 mb-2 text-center">
+    <div class="col">
+      <button type="button" class="btn btn-dark">
+        Add
+      </button>
+    </div>
+  </div>
 </div>
-<div>
-  <label>Válido: </label>{{ formHotel1.valid | json}}
-</div>
 
-
-<hr>
-<div class="col-lg-4 justify-content-center">
-
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <table class="table">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table>
+<!--form modal-->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Hotel</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h3>Hello!</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary botonesIS" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-primary botonesIS" (click)="saveSomeThing()">
+          Editar
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

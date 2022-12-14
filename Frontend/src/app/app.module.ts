@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HotelComponent } from './hotel/hotel.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-//import { DataTablesModule} from 'angular-datatables';
+import { DataTablesModule} from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    DataTablesModule,
     HttpClientModule,
     ReactiveFormsModule
   ],
