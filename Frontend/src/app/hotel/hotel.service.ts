@@ -17,6 +17,10 @@ export class HotelService {
     return this.httpClient.get<Hotel[]>(`${this.url}`);
   }
 
+  findHotel(id:number): Observable<Hotel>{
+    return this.httpClient.get<Hotel>(`${this.url}/${id}`);
+  }
+
   addHotel(hotel: Hotel): Observable<Hotel>{
     return this.httpClient.post<Hotel>(`${this.url}/add`,hotel);
   }

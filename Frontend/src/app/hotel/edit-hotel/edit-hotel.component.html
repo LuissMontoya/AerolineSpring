@@ -1,0 +1,153 @@
+ <!-- Formulario -->
+ <form action="" method="post" [formGroup]="formHotelEdit" (ngSubmit)="onSubmit(formHotelEdit)">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 col-md-12 col-sm-12 col-12 py-1 align-self-center text-center">
+      <div class="card shadow cuadroHeader " id="cuepoCuadroBusqueda">
+        <div class="row justify-content-left py-2">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12 py-3 align-self-center text-left">
+            <label class="titulosPrincipalesPagina">Hotel</label>
+          </div>
+
+        </div>
+
+        <hr />
+        <div class="row justify-content-left py-2">
+
+          <div class="col-lg-2 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left ocultar">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <label>Codigo</label>
+              </div>
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <input class="form-control inputFomulario" formControlName="codigo" type="text" placeholder="Codigo" id="code"
+                  name="txbCode" readonly>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <label>Nombre</label>
+              </div>
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <input class="form-control inputFomulario" type="text" placeholder="Nombre" id="name"
+                  name="txbName" formControlName="nombre" oninput="this.value = this.value.toUpperCase()"
+                  [value]="hotel.nombre">
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <label>Nit</label>
+              </div>
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <input class="form-control inputFomulario" formControlName="nit" type="text" placeholder="Nit" id="nit" name="txbNit"
+                [value]="hotel.nit">
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <label>Address</label>
+              </div>
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <input class="form-control inputFomulario" formControlName="direccion" type="text" placeholder="Direccion" id="address"
+                  name="txbAddress" [value]="hotel.direccion">
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <label>Telefono</label>
+              </div>
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <input class="form-control inputFomulario" type="text" formControlName="telefono" placeholder="Telefono" id="phone"
+                  name="txbPhone" [value]="hotel.telefono">
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <label>Estado</label>
+              </div>
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <!--    <input class="form-control inputFomulario" type="text" placeholder="Estado" id="status" name="txbStatus">-->
+                <select name="txbStatus" id="status" class="form-select inputFomulario" placeholder="Opciones" formControlName="estado" [value]="hotel.estado">
+                  <option value="">ESTADO
+                  </option>
+                  <option value="A">ACTIVO</option>
+                  <option value="I">INACTIVO</option>
+                </select>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <label>Email</label>
+              </div>
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <input class="form-control inputFomulario" type="email" formControlName="email" placeholder="example@example.com"
+                  id="email" name="txbEmail" [value]="hotel.email">
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <label>Celular</label>
+              </div>
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <input class="form-control inputFomulario" type="text" formControlName="celular" placeholder="Celular" id="mobile"
+                  name="txbMobile" [value]="hotel.celular">
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-2 col-md-3 col-sm-12 col-12 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <input id='btnUpdateHotel' class="form-control botonesIS" style="width:130px;"  type="submit"
+                  value="Guardar" name="updateHotel" />
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 col-sm-12 col-12 py-1 align-self-center text-left">
+            <div class="row justify-content-left py-2">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
+                <input id='cancelUp' class="form-control botonesIS" style="width:130px;" type="button"
+                  value="Cancelar" name="cancelUpdate" [routerLink]="['/hotel']" />
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <hr />
+      </div>
+    </div>
+  </div>
+
+</form>
+ <!-- Formulario -->

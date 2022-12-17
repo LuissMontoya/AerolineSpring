@@ -1,15 +1,11 @@
-<div>
-  <h4 id="title">Hoteles</h4>
-</div>
-<hr />
+
 <script src="../js/jquery-3.3.1.js"></script>
 <!-- <ul class="hoteles">
   <li *ngFor="let hotel of hoteles" >
     {{ hotel.hotecodi }} - {{hotel.hotenomb}}
   </li>
 </ul> -->
-<div>
-  <form action="">
+<!-- <div>  <form action="">
 
     <div class="card" style="width:450px;text-align:center;">
       <div class="card-body">
@@ -28,7 +24,7 @@
   </form>
 </div>
 
-<hr>
+<hr> -->
 
 <!-- Formulario -->
 <form action="" method="post" [formGroup]="formHotel" (ngSubmit)="onSubmit(formHotel)">
@@ -64,9 +60,10 @@
               <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
                 <input class="form-control inputFomulario" oninput="this.value = this.value.toUpperCase()"
                   formControlName="nombre" type="text" placeholder="Nombre" id="name" name="txbName" required>
-                  <label class="error" *ngIf="Nombre.errors?.['required'] && (Nombre.touched || Nombre.dirty)">Campo requerido.</label>
-                  <label class="error" *ngIf="Nombre.errors?.['minlength']">longitud no válida</label>
-                </div>
+                <label class="error" *ngIf="Nombre.errors?.['required'] && (Nombre.touched || Nombre.dirty)">Campo
+                  requerido.</label>
+                <label class="error" *ngIf="Nombre.errors?.['minlength']">longitud no válida</label>
+              </div>
             </div>
           </div>
 
@@ -76,11 +73,13 @@
                 <label>Nit</label>
               </div>
               <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
-                <input class="form-control inputFomulario" type="text"
-                  formControlName="nit" placeholder="Nit" id="nit" name="txbNit" required>
-                  <label class="error" *ngIf="Nit.errors?.['required'] && (Nit.touched || Nit.dirty)">Campo requerido.</label>
-                  <label class="error" *ngIf="Nit.errors?.['minlength'] && (Nit.touched || Nit.dirty)">longitud no válida.</label>
-                  <label class="error" *ngIf="Nit.errors?.['pattern'] && (Nit.touched)">digite un nit válido.</label>
+                <input class="form-control inputFomulario" type="text" formControlName="nit" placeholder="Nit" id="nit"
+                  name="txbNit" required>
+                <label class="error" *ngIf="Nit.errors?.['required'] && (Nit.touched || Nit.dirty)">Campo
+                  requerido.</label>
+                <label class="error" *ngIf="Nit.errors?.['minlength'] && (Nit.touched || Nit.dirty)">longitud no
+                  válida.</label>
+                <label class="error" *ngIf="Nit.errors?.['pattern'] && (Nit.touched)">digite un nit válido.</label>
               </div>
             </div>
           </div>
@@ -93,7 +92,9 @@
               <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
                 <input class="form-control inputFomulario" type="text" formControlName="direccion"
                   placeholder="Direccion" id="address" name="txbAddress" required>
-                  <label class="error" *ngIf="Direccion.errors?.['required'] && (Direccion.touched || Direccion.dirty)">dirección no válida.</label>
+                <label class="error"
+                  *ngIf="Direccion.errors?.['required'] && (Direccion.touched || Direccion.dirty)">dirección no
+                  válida.</label>
               </div>
             </div>
           </div>
@@ -106,9 +107,11 @@
               <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
                 <input class="form-control inputFomulario" type="text" formControlName="telefono" placeholder="Telefono"
                   id="phone" name="txbPhone" required>
-                  <label class="error" *ngIf="Telefono.errors?.['required'] && (Telefono.touched || Telefono.dirty)">Campo requerido.</label>
-                  <label class="error" *ngIf="Telefono.errors?.['minlength']">longitud no válida.</label>
-                  <label class="error" *ngIf="Telefono.errors?.['pattern'] && (Telefono.touched || Telefono.dirty)">digite un teléfono válido.</label>
+                <label class="error" *ngIf="Telefono.errors?.['required'] && (Telefono.touched || Telefono.dirty)">Campo
+                  requerido.</label>
+                <label class="error" *ngIf="Telefono.errors?.['minlength']">longitud no válida.</label>
+                <label class="error" *ngIf="Telefono.errors?.['pattern'] && (Telefono.touched || Telefono.dirty)">digite
+                  un teléfono válido.</label>
               </div>
             </div>
           </div>
@@ -139,7 +142,8 @@
               <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
                 <input class="form-control inputFomulario" type="email" formControlName="email"
                   placeholder="example@example.com" id="email" name="txbEmail">
-                  <label class="error" *ngIf="Email.errors?.['email'] && (Email.touched || Email.dirty)">Digite un correo válido.</label>
+                <label class="error" *ngIf="Email.errors?.['email'] && (Email.touched || Email.dirty)">Digite un correo
+                  válido.</label>
               </div>
             </div>
           </div>
@@ -152,8 +156,9 @@
               <div class="col-lg-12 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
                 <input class="form-control inputFomulario" type="text" placeholder="Celular" id="mobile"
                   formControlName="celular" name="txbMobile">
-                  <!-- <label class="error" *ngIf="Celular.errors?.['minlength']">longitud no válida.</label> -->
-                  <label class="error" *ngIf="Celular.errors?.['pattern'] && (Celular.touched || Celular.dirty)">digite un celular válido.</label>
+                <!-- <label class="error" *ngIf="Celular.errors?.['minlength']">longitud no válida.</label> -->
+                <label class="error" *ngIf="Celular.errors?.['pattern'] && (Celular.touched || Celular.dirty)">digite un
+                  celular válido.</label>
               </div>
             </div>
           </div>
@@ -161,8 +166,8 @@
           <div class="col-lg-2 col-md-4 col-sm-12 col-12 py-1 align-self-center text-left">
             <div class="row justify-content-left py-2">
               <input id='btnSaveHotel' class="btn form-control botonesIS" style="width:130px" type="submit"
-                value="Guardar" [disabled]="formHotel.invalid"/>
-                <!-- [disabled]="formHotel.invalid" -->
+                value="Guardar" [disabled]="formHotel.invalid" />
+              <!-- [disabled]="formHotel.invalid" -->
             </div>
           </div>
 
@@ -219,7 +224,7 @@
             <td>{{ hotel.estado }}</td>
             <td>{{ hotel.email }}</td>
             <td>{{ hotel.celular }}</td>
-            <td><a class="btn btn-warning"><i class="fa fa-edit fa-2x" (click)="openFormModal(hotel.codigo)"
+            <td><a class="btn btn-warning"><i class="fa fa-edit fa-2x" [routerLink]="['/hotel', hotel.codigo]"
                   aria-hidden="true"></i></a></td>
             <td><a class="btn btn-danger"><i class="fa fa-trash fa-2x" (click)="eliminarHotel(hotel.codigo)"
                   aria-hidden="true"></i></a></td>
@@ -232,36 +237,4 @@
   </div>
 </div>
 
-<!-- Modal Editar -->
-<div class="container">
-  <div class="row mt-4 mb-2 text-center">
-    <div class="col">
-      <button type="button" class="btn btn-dark">
-        Add
-      </button>
-    </div>
-  </div>
-</div>
 
-<!--form modal-->
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Hotel</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <h3>Hello!</h3>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary botonesIS" data-bs-dismiss="modal">
-          Cancelar
-        </button>
-        <button type="button" class="btn btn-primary botonesIS" (click)="saveSomeThing()">
-          Editar
-        </button>
-      </div>
-    </div>
-  </div>
-</div>

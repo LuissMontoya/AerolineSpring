@@ -125,7 +125,12 @@ export class HotelComponent implements AfterViewInit, OnInit {
        this.hotelService.addHotel(form.value).subscribe(
          (response:Hotel)=>{
            console.log(response);
-           window.location.reload();
+           if(response.codigo != null){
+            alert('Registro Insertado Correctamente.');
+            window.location.reload();
+           }else{
+            alert('No se pudo Insertar el registro.');
+           }
          },
         );
     }
