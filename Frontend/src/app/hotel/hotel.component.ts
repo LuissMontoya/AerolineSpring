@@ -1,13 +1,15 @@
 import { HotelService } from './hotel.service';
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Hotel } from '../model/HotelModel';
 import * as $ from 'jquery';
+  // import 'datatables.net';
+//  import { DataTablesModule } from 'angular-datatables';
+
 declare var window: any;
 
-import { DataTableDirective } from 'angular-datatables';
+// import { DataTableDirective } from 'angular-datatables';
 
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -15,20 +17,18 @@ import { Subject } from 'rxjs';
   templateUrl: './hotel.component.html',
   styleUrls: ['./hotel.component.css'],
 })
-export class HotelComponent implements AfterViewInit, OnInit {
+export class HotelComponent implements OnDestroy,AfterViewInit, OnInit {
   hoteles!: Hotel[];
   selectedHotel!: Hotel;
-  seleccionados: string[] = [];
 
-  items:any;
   formHotel!: FormGroup;
-
   formModal: any;
 
-  /*@ViewChild(DataTableDirective, {static: false})
-  dtElement!: DataTableDirective;
-*/
-  /*dtOptions: DataTables.Settings ={};
+  //datatable
+   dtOptions: DataTables.Settings = {};
+   dtTrigger: Subject<any> = new Subject<any>();
+
+  /*
   //dtTrigger = new Subject();
   dtTrigger: Subject<any> = new Subject();
  */
@@ -37,28 +37,30 @@ export class HotelComponent implements AfterViewInit, OnInit {
 
   constructor(
     private hotelService: HotelService,
-    private formBuilder: FormBuilder
   ) {}
 
+
   ngOnInit(): void {
-    /*this.dtOptions = {
-      ajax: 'data/data.json',
-      columns: [{
-        title: 'ID',
-        data: 'id'
-      }, {
-        title: 'First name',
-        data: 'firstName'
-      }, {
-        title: 'Last name',
-        data: 'lastName'
-      }]
-    };*/
+      this.dtOptions = {
+        language:{
+          url: "//cdn.datatables.net/plug-ins/1.13.1/i18n/es-ES.json"
+        },
+        pagingType: 'full_numbers',
+        pageLength: 5,
+        lengthMenu: [5,10,15,]
+
+      };
+    // $.noConflict(true);
+    //  $(document).ready(function() {
+    //    $('#hotels').DataTable({
+    //     "paging": true,
+    //     "order": [[ 4, "asc" ]]
+    // });
+    // });
 
     // const table: any = $('example');
    // this.dtElement = table.DataTable();
 
-    //console.log(this.hotel);
     this.getHotel();
 
     this.formHotel = new FormGroup({
@@ -90,7 +92,7 @@ export class HotelComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit(): void {
-    //this.dtTrigger.next(null);
+     this.dtTrigger.next(false);
   }
 
 
@@ -100,7 +102,8 @@ export class HotelComponent implements AfterViewInit, OnInit {
         console.log(this.hotel[1])},*/
       (response) => {this.hoteles = response;
        // this.dtTrigger.next(null);
-
+       // initiate our data table
+        this.dtTrigger.next(false);
         //console.log(response);
       }
     );
@@ -155,13 +158,11 @@ export class HotelComponent implements AfterViewInit, OnInit {
     }
   }
 
-  actualizarHotel(codigo:number){
-
-  }
 
   openFormModal(codigo: number) {
     this.formModal.show();
   }
+
   saveSomeThing() {
     // confirm or save something
     this.formModal.hide();
@@ -189,5 +190,11 @@ export class HotelComponent implements AfterViewInit, OnInit {
   get Celular(): FormControl{
     return this.formHotel.get("celular") as FormControl;
   }
+
+
+  ngOnDestroy(): void {
+      this.dtTrigger.unsubscribe();
+  }
+
 
 }

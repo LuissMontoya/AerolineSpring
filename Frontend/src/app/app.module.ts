@@ -10,6 +10,7 @@ import { HotelComponent } from './hotel/hotel.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { DataTablesModule} from 'angular-datatables';
+
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { EditHotelComponent } from './hotel/edit-hotel/edit-hotel.component';
