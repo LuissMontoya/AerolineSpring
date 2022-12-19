@@ -39,27 +39,37 @@ export class HotelComponent implements OnDestroy,AfterViewInit, OnInit {
     private hotelService: HotelService,
   ) {}
 
-
   ngOnInit(): void {
-      this.dtOptions = {
-        language:{
-          url: "//cdn.datatables.net/plug-ins/1.13.1/i18n/es-ES.json"
-        },
-        pagingType: 'full_numbers',
-        pageLength: 5,
-        lengthMenu: [5,10,15,]
+    this.dtOptions = {
+      responsive: true,
+				"ordering": false,
+				"info":     false,
+			"lengthMenu":  [10, 25, 30,40,50],
+				language: {
+						"searchPlaceholder":    "Buscar",
+						"decimal": "",
+						"emptyTable": "No hay información",
 
-      };
-    // $.noConflict(true);
-    //  $(document).ready(function() {
-    //    $('#hotels').DataTable({
-    //     "paging": true,
-    //     "order": [[ 4, "asc" ]]
-    // });
-    // });
+						"info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+						"infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+						"infoFiltered": "(Filtrado de _MAX_ total entradas)",
+						"infoPostFix": "",
+						"thousands": ",",
+						"lengthMenu": " _MENU_ ",
+						"loadingRecords": "Cargando...",
+						"processing": "Procesando...",
+						"search": " ",
+						"zeroRecords": "Sin resultados encontrados",
 
-    // const table: any = $('example');
-   // this.dtElement = table.DataTable();
+						"paginate": {
+							"first": "Primero",
+							"last": "Ultimo",
+							"next": "Siguiente",
+							"previous": "Anterior"
+						}
+				},
+        //dom: 'Bfrtip',
+    }
 
     this.getHotel();
 
