@@ -28,6 +28,7 @@ import java.util.Collections;
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
+    @Bean
     public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res)
             throws AuthenticationException {
 
@@ -47,6 +48,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     }
 
     @Override
+    @Bean
     protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res,
                                             FilterChain chain, Authentication authResult) throws IOException, ServletException {
 

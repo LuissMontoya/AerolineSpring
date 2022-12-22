@@ -24,9 +24,6 @@ public class WebSecurityConfig {
     private UserDetailsService userDetailsService;
 
     @Autowired
-    private JWTAuthenticationFilter jwtAuthenticationFilter;
-
-    @Autowired
     private JwtAuthorizationFilter jwtAuthorizationFilter;
 
 
@@ -42,8 +39,8 @@ public class WebSecurityConfig {
                 .authorizeRequests()
                 .anyRequest()
                 .authenticated()
-                .and()
-                .httpBasic()
+                //.and()
+                //.httpBasic()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -110,6 +107,11 @@ public class WebSecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
          return http.build();
        // http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+    }*/
+
+    /*
+    public static void main(String[] args) {
+        System.out.println("pass: "+ new BCryptPasswordEncoder().encode("Luis"));
     }*/
 
 }
