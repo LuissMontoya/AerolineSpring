@@ -1,6 +1,6 @@
 import { HotelService } from './hotel.service';
 import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Hotel } from '../model/HotelModel';
+import { Hotel } from '../model/Models';
 import * as $ from 'jquery';
   // import 'datatables.net';
 //  import { DataTablesModule } from 'angular-datatables';

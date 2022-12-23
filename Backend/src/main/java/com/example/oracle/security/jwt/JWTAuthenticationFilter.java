@@ -4,11 +4,7 @@ import com.example.oracle.security.entity.AuthCredentials;
 import com.example.oracle.security.service.UserDetailsImp;
 import com.example.oracle.security.service.UserDetailsServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.jsonwebtoken.ExpiredJwtException;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,12 +17,14 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
 
-
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-
     @Override
     @Bean
     public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res)
@@ -50,7 +48,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     @Bean
     protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res,
-                                            FilterChain chain, Authentication authResult) throws IOException, ServletException {
+                                            FilterChain chain, Authentication authResult) throws IOException, ServletException, ServletException {
 
         UserDetailsImp userDetails = (UserDetailsImp) authResult.getPrincipal();
         String token = TokenUtils.createToken(userDetails.getNombre(), userDetails.getUsername());

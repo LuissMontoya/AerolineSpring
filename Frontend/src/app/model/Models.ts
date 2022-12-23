@@ -8,3 +8,9 @@ export interface Hotel{
   email?:String;
   celular?:number;
  }
+
+
+ export interface Credentials {
+  email: String;
+  password: String;
+ }

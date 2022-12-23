@@ -1,10 +1,11 @@
-package com.example.oracle.security;
+package com.example.oracle.config;
 
 import com.example.oracle.security.jwt.JWTAuthenticationFilter;
 import com.example.oracle.security.jwt.JwtAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -34,13 +35,17 @@ public class WebSecurityConfig {
         jwtAuthenticationFilter.setFilterProcessesUrl("/login");
 
         return http
+                .cors()
+                .and()
                 .csrf()
                 .disable()
-                .authorizeRequests()
+                .authorizeHttpRequests()
+                //.requestMatchers(HttpMethod.GET,"/api/hotel")
+                //.permitAll()
                 .anyRequest()
                 .authenticated()
-                //.and()
-                //.httpBasic()
+                .and()
+                .httpBasic()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -109,9 +114,9 @@ public class WebSecurityConfig {
        // http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
     }*/
 
-    /*
+/*
     public static void main(String[] args) {
-        System.out.println("pass: "+ new BCryptPasswordEncoder().encode("Luis"));
+        System.out.println("pass: "+ new BCryptPasswordEncoder().encode("12345"));
     }*/
 
 }

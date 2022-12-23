@@ -1,9 +1,9 @@
 package com.example.oracle.security.jwt;
 
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.cglib.core.internal.Function;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,7 +17,7 @@ import java.util.Map;
 
 
 public class TokenUtils {
-    private final static String ACCESS_TOKEN_SECRET = "secreto";
+    private final static String ACCESS_TOKEN_SECRET = "eNRnAWe6inFuo8o2u8SLLZLjolYDmDP7SzL0YfYI";
     private final static Long ACCESS_TOKEN_VALIDITY_SECONDS = 2_595_000L;
 
     public static String createToken(String name, String email){

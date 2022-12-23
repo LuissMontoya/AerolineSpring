@@ -1,7 +1,7 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Hotel } from 'src/app/model/HotelModel';
+import { Hotel } from 'src/app/model/Models';
 import { HotelService } from '../hotel.service';
 import * as $ from 'jquery';
 

@@ -26,7 +26,7 @@ public class UserDetailServiceImp implements UserDetailsService {
 
 }
 */
-
+/*
 @Service
 public class UserServiceImp implements UserService{
 
@@ -67,4 +67,4 @@ public class UserServiceImp implements UserService{
     public Long getUltimateId() {
         return userRepository.getUltimateId();
     }
-}
+}*/

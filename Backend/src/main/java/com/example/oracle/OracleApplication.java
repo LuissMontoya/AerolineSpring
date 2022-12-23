@@ -3,7 +3,6 @@ package com.example.oracle;
 import com.example.oracle.security.entity.Rol;
 import com.example.oracle.security.entity.Usuarios;
 import com.example.oracle.security.entity.UsuarioRol;
-import com.example.oracle.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,8 +14,8 @@ import java.util.Set;
 @SpringBootApplication
 public class OracleApplication implements CommandLineRunner{
 
-	@Autowired
-	private UserService userService;
+	//@Autowired
+	//private UserService userService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(OracleApplication.class, args);

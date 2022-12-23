@@ -28,6 +28,7 @@ public class UserService {
     }
 
 }*/
+/*
 public interface UserService {
     public Usuarios saveUser(Usuarios user, Set<UsuarioRol> usuarioRoles) throws Exception;
 
@@ -36,4 +37,4 @@ public interface UserService {
     public void detele(Long userId);
 
     public abstract Long getUltimateId();
-}
+}*/

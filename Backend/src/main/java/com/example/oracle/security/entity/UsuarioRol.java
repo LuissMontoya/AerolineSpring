@@ -1,6 +1,7 @@
 package com.example.oracle.security.entity;
-import jakarta.persistence.*;
-import org.springframework.boot.context.properties.bind.Name;
+
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "USUARIOROL")

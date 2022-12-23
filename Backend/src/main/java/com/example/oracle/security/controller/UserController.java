@@ -4,7 +4,7 @@ import com.example.oracle.security.entity.Rol;
 import com.example.oracle.security.entity.UsuarioRol;
 import com.example.oracle.security.entity.Usuarios;
 import com.example.oracle.security.repository.UserRepository;
-import com.example.oracle.security.service.UserService;
+//import com.example.oracle.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+/*
 @RestController
 @RequestMapping("api/users")
 public class UserController {
@@ -23,6 +23,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping(name = "/", produces = {"application/json"})
     public List<Usuarios> listUsers(){
         return userRepository.findAll();
     }
@@ -52,3 +53,4 @@ public class UserController {
     }
 
 }
+*/
