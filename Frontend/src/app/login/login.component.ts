@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   login(form: NgForm){
     console.log('form -> ',form.value);
     this.apiService.login(this.cred).subscribe(response => {
-      this.router.navigate(['/hotel']);
+      this.router.navigate(['/main']);
     });
   }
 

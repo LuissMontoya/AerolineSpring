@@ -1,3 +1,4 @@
+import { MainComponent } from './main/main.component';
 import { AuthGuard } from './helpers/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -12,7 +13,8 @@ const routes: Routes = [
   },
   { path: 'hotel/:id', component: EditHotelComponent },
   { path: 'login', component: LoginComponent },
-  { path: '**', redirectTo: '' },
+  { path: 'main', component: MainComponent },
+  { path: '**', redirectTo: 'main' },
 ];
 
 @NgModule({

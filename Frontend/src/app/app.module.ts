@@ -18,6 +18,7 @@ import { EditHotelComponent } from './hotel/edit-hotel/edit-hotel.component';
 import { LoginComponent } from './login/login.component';
 
 import {FormsModule} from '@angular/forms';
+import { MainComponent } from './main/main.component';
 /*
 const routes: Routes = [
   { path: 'hotel', component: HotelComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
     FooterComponent,
     EditHotelComponent,
     LoginComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
