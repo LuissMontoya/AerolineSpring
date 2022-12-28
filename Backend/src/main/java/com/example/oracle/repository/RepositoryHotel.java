@@ -3,6 +3,7 @@ package com.example.oracle.repository;
 import com.example.oracle.Entity.Hotel;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,4 +15,8 @@ public interface RepositoryHotel extends CrudRepository<Hotel, Long> {
 
     @Query(value = "SELECT MAX(HOTECODI) FROM HOTEL", nativeQuery = true)
     Long getUltimateId();
+
+    @Query(value = "SELECT * FROM HOTEL WHERE HOTENOMB LIKE %:name% ORDER BY HOTENOMB ASC ", nativeQuery = true)
+    List<Hotel> findByNameA(@Param("name") String name);
+
 }

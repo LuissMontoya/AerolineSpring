@@ -147,12 +147,10 @@ export class HotelComponent implements OnDestroy,AfterViewInit, OnInit {
          },
         );
     }
-
-
   }
 
   eliminarHotel(codigo:number){
-    //alert(codigo);
+    alert(codigo);
     let op = confirm("Realmente desea eliminar el registro?");
     if(op){
      this.hotelService.deleteHotel(codigo).subscribe(
@@ -165,6 +163,19 @@ export class HotelComponent implements OnDestroy,AfterViewInit, OnInit {
      );
     }else{
       alert('Registro No Eliminado!');
+    }
+  }
+
+  buscarPorNombre(nombre: String){
+    //alert("nombre -> "+nombre);
+    if(nombre == null || nombre == ''){
+      document.getElementById('name')?.focus();
+    }else{
+      this.hotelService.findHotelByName(nombre).subscribe(
+        (response) =>{
+          this.hoteles = response;
+        }
+      );
     }
   }
 

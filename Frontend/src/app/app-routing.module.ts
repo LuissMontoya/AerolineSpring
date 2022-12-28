@@ -8,12 +8,12 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
-    path: 'hotel', component: HotelComponent,
-    canActivate: [AuthGuard]
+    path: 'hotel', component: HotelComponent
   },
   { path: 'hotel/:id', component: EditHotelComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'main', component: MainComponent },
+  { path: 'main', component: MainComponent,
+  canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'main' },
 ];
 

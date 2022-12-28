@@ -33,5 +33,9 @@ export class HotelService {
     return this.httpClient.delete<boolean>(`${this.url}/delete/${id}`);
   }
 
+  findHotelByName(name:String): Observable<Hotel[]>{
+    return this.httpClient.get<Hotel[]>(`${this.url}/name/${name}`);
+  }
+
 
 }

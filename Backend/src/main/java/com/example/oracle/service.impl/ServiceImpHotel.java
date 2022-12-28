@@ -42,5 +42,7 @@ public class ServiceImpHotel {
         return repositoryHotel.getUltimateId();
     }
 
-
+    public List<Hotel> findByNameA(String nombre){
+        return repositoryHotel.findByNameA(nombre);
+    }
 }

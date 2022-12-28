@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
     if(this.apiService.getToken()){
       return true;
     }
-    this.router.navigate(['/login']);
+    this.router.navigate(['/main']);
 
     return false;
   }

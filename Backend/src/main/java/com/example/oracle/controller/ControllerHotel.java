@@ -30,6 +30,16 @@ public class ControllerHotel {
         return hotel;
     }
 
+    @GetMapping(path = "/hotel/name/{name}")
+    public List<Hotel> findByNameA(@PathVariable String name){
+        List<Hotel> hotel = serviceImpHotel.findByNameA(name);
+        if(hotel == null) {
+            throw new RuntimeException("Hotel name not found -"+name);
+        }
+        return hotel;
+    }
+
+
     @PostMapping(path = "/hotel/add")
     public Hotel save(@RequestBody Hotel hotel){
         Long id_ = serviceImpHotel.getUltimateId();
