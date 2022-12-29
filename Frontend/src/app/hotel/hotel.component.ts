@@ -170,6 +170,11 @@ export class HotelComponent implements OnDestroy,AfterViewInit, OnInit {
     //alert("nombre -> "+nombre);
     if(nombre == null || nombre == ''){
       document.getElementById('name')?.focus();
+      this.hotelService.finAllHotel().subscribe(
+        (response) =>{
+          this.hoteles = response;
+        }
+      );
     }else{
       this.hotelService.findHotelByName(nombre).subscribe(
         (response) =>{
