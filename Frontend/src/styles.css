@@ -4,10 +4,35 @@ html, body{
 
 }
 
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('./assets/fonts/poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('./assets/fonts/poppins/Poppins-Medium.ttf');
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('./assets/fonts/poppins/Poppins-Bold.ttf');
+}
+
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url('./assets/fonts/poppins/Poppins-SemiBold.ttf');
+}
+
 body {
   /*background-image: radial-gradient(#FAC104 10%,  #F9AA02  90%) ;*/
   background: white;
   margin:0px !important;
+  font-family: Poppins-Regular, sans-serif;
+}
+
+.degradado{
+ background-color: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
 }
 
 .ocultar{
@@ -83,7 +108,7 @@ color: white !important;
   place-items: center;
   justify-content: center;
   vertical-align: middle;
-font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
+font-family: Lucida Sans Unicode, Lucida Grande, Poppins-Regular,sans-serif;
   font-weight: bolder;
 }
 /*header*/
@@ -127,13 +152,8 @@ textarea{
     text-transform: uppercase;
 }
 
-
-
 .menuFondo{
-
 background-image: linear-gradient(to left ,  #045FB4 , #0431B4 );
-
-
  color:white;
 }
 .menuFondo2{

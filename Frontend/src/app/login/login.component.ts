@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit(): void {
+
   }
 
   login(form: NgForm){
@@ -28,6 +29,18 @@ export class LoginComponent implements OnInit {
     });
   }
 
-
+  mostrarPwd(pwd:String){
+    let tipo:any = document.getElementById('password');
+    let icon:any = document.getElementById('iconPwd');
+    if(tipo.type == 'password'){
+      tipo.type = 'text';
+      icon.classList.remove("fa-eye");
+      icon.classList.add("fa-eye-slash");
+    }else{
+      tipo.type = 'password';
+      icon.classList.remove("fa-eye-slash");
+      icon.classList.add("fa-eye");
+    }
+  }
 
 }
